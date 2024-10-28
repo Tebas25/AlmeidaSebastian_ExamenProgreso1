@@ -45,6 +45,7 @@ namespace AlmeidaSebastian_ExamenProgreso1.Controllers
         // GET: Almeida/Create
         public IActionResult Create()
         {
+            ViewData["IdCelular"] = new SelectList(_context.Celular, "IdCelular", "Modelo");
             return View();
         }
 
@@ -61,6 +62,7 @@ namespace AlmeidaSebastian_ExamenProgreso1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdCelular"] = new SelectList(_context.Celular, "IdCelular", "Modelo", almeida.IdCelular);
             return View(almeida);
         }
 
